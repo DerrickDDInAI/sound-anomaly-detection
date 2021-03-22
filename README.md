@@ -121,6 +121,7 @@ sound-anomaly-detection
 
 ### Roadmap
 - [x] Download the dataset
+- [ ] Build a dataset by extracting audio features and define target feature
 - [ ] Exploratory Data Analysis
 - [ ] Clean dataset
 - [ ] Prepare dataset for machine learning
