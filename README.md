@@ -74,14 +74,14 @@ The dataset comprises of sounds from four types of industrial machines:
 - slide rails
 - valves
 
-For each type of machine, the following sounds of seven individual product models were recorded:
+For each type of machine, the following sounds of seven individual product models were recorded (in the public dataset, only sounds from 4 models are currently available):
 - normal sounds from 5000 seconds to 10000 seconds 
 - anomalous sounds around 1000 seconds: e.g., contamination, leakage, rotating unbalance, and rail damage
 - additionally, the background noise from several factories was combined with the machine sounds. 
 
 "The sounds were recorded by eight-channel microphone array with 16 kHz sampling rate and 16 bit per sample" (*Purohit & al., 2019).
 
-You can download the MIMII Dataset here: https://zenodo.org/record/3384388
+You can download the public MIMII Dataset here: https://zenodo.org/record/3384388
 
 Source:
 Harsh Purohit, Ryo Tanabe, Kenji Ichige, Takashi Endo, Yuki Nikaido, Kaori Suefusa, and Yohei Kawaguchi, “MIMII Dataset: Sound Dataset for Malfunctioning Industrial Machine Investigation and Inspection,” arXiv preprint arXiv:1909.09347, 2019. URL: https://arxiv.org/abs/1909.09347"
