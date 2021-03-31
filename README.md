@@ -66,6 +66,11 @@ Follow these instructions to install the required libraries: on terminal
 4. Run the command: 
 ```pip3 install -r requirements.txt```
 
+### Additional info
+Note that we develop the source code on
+- macOS Big Sur
+- Windows 10
+
 ## Data Sources
 To train our machine learning model, we use the *MIMII* Dataset: sound dataset for ***M**alfunctioning **I**ndustrial **M**achine investigation and **I**nspection*.
 The dataset comprises of sounds from four types of industrial machines:
