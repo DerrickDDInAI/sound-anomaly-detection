@@ -26,13 +26,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report
-import librosa
-import librosa.display
 import IPython.display as ipd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Import local modules
 
 
 # ============================================================
@@ -122,15 +116,26 @@ def main() -> None:
     (Please type "yes" or "y" to listen)
     """).lower()
 
-    print(random_sound.sound_path.values[0])
     if listen in ("yes", "y"):
-       print("Current sound")
-       current_sound_path = os.path.join(current_script_file, "core",
-                     random_sound.sound_path.values[0].replace("\\", "/"))
-       print(current_sound_path)
-       ipd.Audio(current_sound_path) # ipd.display() to display multiple Audio objects at once
-      #  print("Pre-recorded normal sound")
-      #  ipd.display(ipd.Audio(random_sound.sound_path.values[0]))
+        
+        # Listen to current sound of machine
+        print("Current sound")
+        current_sound_path = os.path.join("core",
+                     *df.loc[[random_idx]].sound_path.values[0].split("\\"))
+        ipd.display(ipd.Audio(current_sound_path)) # ipd.display() to display multiple Audio objects at once
+
+        # Listen to pre-recorded normal sound
+        print("Pre-recorded normal sound")
+        normal_sound = df.loc[
+            (df.machine_type == "valve") & 
+            (df.noise_db == 0) & 
+            (df.model_id == 0) & 
+            (df.target == 0) & 
+            (df.sound == "00000000.wav")
+        ].sound_path.values[0].split("\\")
+        normal_sound_path = os.path.join("core",
+                     *normal_sound)
+        ipd.display(ipd.Audio(normal_sound_path))
 
 # ============================================================
 # Run
