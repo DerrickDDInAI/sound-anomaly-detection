@@ -24,31 +24,42 @@ from typing import List, Set, Dict, TypedDict, Tuple, Optional
 # Import 3rd party modules
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import plot_confusion_matrix
 import librosa
 import librosa.display
 import IPython.display as ipd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
 # Import local modules
-from core.sound import get_all_sounds
 
 
 # ============================================================
 # Main functions
 # ============================================================
 
+def load_model(filename: str) -> GridSearchCV:
+    """
+    Function to load a machine learning model 
+    from core/assets/data directory
+    * param: filename of model
+    """
+    current_script_file = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(
+        current_script_file, "core", "assets", "data", filename)
+
+    return joblib.load(model_path)
+
+
 def main() -> None:
     """
     Main function 
     """
     # Get all sounds
-    df = pd.read_csv(os.path.join("assets", "data", "thread_csv_all.csv"))
+    current_script_file = os.path.dirname(os.path.abspath(__file__))
+    df = pd.read_csv(os.path.join(current_script_file, "core",
+                     "assets", "data", "thread_csv_all.csv"))
 
     # Feature engineering
     # Replace abnormal by 1, normal by 0
@@ -81,20 +92,49 @@ def main() -> None:
     print(f"X_test:  {X_test.shape}    - y_train: {y_test.shape}")
 
     # Load best model
-    current_script_file = os.path.dirname(os.path.abspath(__file__))
-    model_path = os.path.join(
-        current_script_file, "core", "assets", "data", "best_model_all_features.joblib")
-    loaded_model = joblib.load(model_path)
-
-    print(loaded_model)
+    loaded_model: GridSearchCV = load_model("best_model_all_features.joblib")
     print(f"Best parameters: {loaded_model.best_params_}")
-    print(classification_report(y_test, loaded_model.predict(X_test)))
 
+    y_pred: np.ndarray = loaded_model.predict(X_test)
+    print(classification_report(y_test, y_pred))
+
+    # Create a DataFrame with true and predicted labels, keep the original index (to retrieve the sound)
+    df_true_pred_test = pd.DataFrame(np.column_stack([y_test, y_pred]), index=y_test.index, columns=["y_test", "y_pred"])
+    
+    # Get all sounds predicted as abnormal (class 1)
+    y_pred_abnormal: np.ndarray = df_true_pred_test[df_true_pred_test.y_pred == 1]
+
+    # Choose a random sound from predicted abnormals
+    random_idx: int = random.choice(y_pred_abnormal.index)
+    random_sound: pd.DataFrame = df.loc[[random_idx]]
+    print(f"machine type: {random_sound.machine_type.values[0]}") # .values[0] to print the value and not a list
+    print(f"model id: {random_sound.model_id.values[0]}")
+    print(f"noise db: {random_sound.noise_db.values[0]}")
+    print(f"sound: {random_sound.model_id.values[0]}")
+    print(f"true label: {random_sound.target.values[0]}")
+
+   # Ask the user if he wants to listen the predicted abnormal and normal sound of the machine
+    listen: str = input("""
+    Would you like to listen 
+    - the current sound of the machine
+    AND 
+    - the pre-recorded sound of the machine when it is normal
+    (Please type "yes" or "y" to listen)
+    """).lower()
+
+    print(random_sound.sound_path.values[0])
+    if listen in ("yes", "y"):
+       print("Current sound")
+       current_sound_path = os.path.join(current_script_file, "core",
+                     random_sound.sound_path.values[0].replace("\\", "/"))
+       print(current_sound_path)
+       ipd.Audio(current_sound_path) # ipd.display() to display multiple Audio objects at once
+      #  print("Pre-recorded normal sound")
+      #  ipd.display(ipd.Audio(random_sound.sound_path.values[0]))
 
 # ============================================================
 # Run
 # ============================================================
-
 # Executes the main() function if this file is directly run
 if __name__ == "__main__":
     main()
