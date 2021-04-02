@@ -45,7 +45,7 @@ The deadline to complete it is scheduled to `02/04/2021 at 9 a.m.`.
 
 
 ## Installation
-To run the program, you need:
+To run the program and see a live demo of the code, you need:
 - To install the libraries below
 - To download the *MIMII* dataset (see [Data sources](#data-sources) for information).
 
