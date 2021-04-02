@@ -98,6 +98,9 @@ def main() -> None:
     # Get all sounds predicted as abnormal (class 1)
     y_pred_abnormal: np.ndarray = df_true_pred_test[df_true_pred_test.y_pred == 1]
 
+    # Print number of sounds predicted as abnormals
+    print(f"Number of predicted abnormal machines: {len(y_pred_abnormal)}")
+
     # Choose a random sound from predicted abnormals
     random_idx: int = random.choice(y_pred_abnormal.index)
     random_sound: pd.DataFrame = df.loc[[random_idx]]
