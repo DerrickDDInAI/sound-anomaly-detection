@@ -41,7 +41,7 @@ It is a 2 weeks project.
 The deadline to complete it is scheduled to `02/04/2021 at 9 a.m.`.
 
 ### Visuals
-![image title to add](core/assets/image.png)
+![Live demo](core/assets/images/live_demo.png)
 
 
 ## Installation
@@ -50,13 +50,18 @@ To run the program, you need:
 - To download the *MIMII* dataset (see [Data sources](#data-sources) for information).
 
 ### Install the libraries
-| Library       | Used to                                        |
-| ------------- | :----------------------------------------------|
-| Numpy         | To handle Numpy arrays                         |
-| Pandas        | To store and access info in a DataFrame        |
-| Matplotlib    | To plot the data                               |
-| Scikit-learn  | To preprocess dataset, perform machine learning|
-| librosa       | To analyse audio                               |
+| Library          | Used to                                        |
+| ---------------- | :----------------------------------------------|
+| Numpy            | To handle Numpy arrays                         |
+| Pandas           | To store and access info in a DataFrame        |
+| Matplotlib       | To plot the data                               |
+| Scikit-learn     | To preprocess dataset, perform machine learning|
+| imbalanced-learn | To deal with unbalanced data                   |
+| xgboost          | To train model with gradient boosting algorithm|
+| librosa          | To analyse audio                               |
+| jupyter          | To see Exploratory Data Analysis and live demo |
+| ipywidgets       | To create and display widgets                  |
+
 
 
 Follow these instructions to install the required libraries: on terminal
@@ -66,10 +71,16 @@ Follow these instructions to install the required libraries: on terminal
 4. Run the command: 
 ```pip3 install -r requirements.txt```
 
+To see the live demo, you need to enable `widgetsnbextension`
+1. Open your terminal;
+2. Create and activate your virtual environment.
+3. Run the command: 
+```jupyter nbextension enable --py widgetsnbextension```
+
 ### Additional info
 Note that we develop the source code on
 - macOS Big Sur
-- Windows 10
+- linux
 
 ## Data Sources
 To train our machine learning model, we use the *MIMII* Dataset: sound dataset for ***M**alfunctioning **I**ndustrial **M**achine investigation and **I**nspection*.
@@ -94,16 +105,14 @@ Harsh Purohit, Ryo Tanabe, Kenji Ichige, Takashi Endo, Yuki Nikaido, Kaori Suefu
 ## Instructions
 ### How to run the program
 - Run `main.py` to start the program.
+- Run `main_live_demo.ipynb` to see a live demo of the program.
 Or
 - On your terminal:
 ```python3 main.py```
 
 ### Usage example
-#### Example of input the user can give:
-_ToDo_
+![Live demo usage](core/assets/images/live_demo_usage.png)
 
-#### Output of the example:
-_ToDo_
 
 
 ## Architecture
@@ -113,6 +122,7 @@ The project is structured as follows:
 sound-anomaly-detection
 │   README.md               :explains the project
 │   main.py                 :script to run in order to start the program
+│   main_live_demo.ipynb    :script to see a live demo of the program
 │   requirements.txt        :packages to install to run the program
 │   .gitignore              :specifies which files to ignore when pushing to the GitHub repository
 │
@@ -126,23 +136,23 @@ sound-anomaly-detection
 
 ### Roadmap
 - [x] Download the dataset
-- [ ] Build a dataset by extracting audio features and define target feature
-- [ ] Exploratory Data Analysis
-- [ ] Clean dataset
-- [ ] Prepare dataset for machine learning
-- [ ] Build machine learning models for predictive classification and/or regression
-- [ ] Select the right performance metrics for your model
-- [ ] Evaluate the distribution of datapoints and evaluate its influence in the model
-- [ ] Tuning parameters of the model for better performance
-- [ ] Identify if we underfit or overfit
-- [ ] Select best model according to performance metrics and customer's requirements
-- [ ] Define the strengths and limitations of the model
+- [X] Build a dataset by extracting audio features and define target feature
+- [X] Exploratory Data Analysis
+- [X] Clean dataset
+- [X] Prepare dataset for machine learning
+- [X] Build machine learning models for predictive classification
+- [X] Select the right performance metrics for your model
+- [X] Evaluate the distribution of datapoints and evaluate its influence in the model
+- [X] Tuning parameters of the model for better performance
+- [X] Identify if we underfit or overfit
+- [X] Select best model according to performance metrics and customer's requirements
+- [X] Define the strengths and limitations of the model
 
 Finally:
-- [ ] Draw conclusions from data analysis and predictions
-- [ ] Build dashboard to display data insights
+- [X] Draw conclusions from data analysis and predictions
+- [X] Build dashboard to display data insights
 - [ ] Optimize code
-- [ ] Prepare presentation (15 minutes + 5 minutes Q&A)
+- [x] Prepare presentation (15 minutes + 5 minutes Q&A)
 
 
 ### Author(s) and acknowledgment
