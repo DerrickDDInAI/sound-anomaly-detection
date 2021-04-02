@@ -122,12 +122,13 @@ The project is structured as follows:
 sound-anomaly-detection
 │   README.md               :explains the project
 │   main.py                 :script to run in order to start the program
-│   main_live_demo.ipynb    :script to see a live demo of the program
+│   main_live_demo.ipynb    :jupyter notebook to see a live demo of the program
 │   requirements.txt        :packages to install to run the program
 │   .gitignore              :specifies which files to ignore when pushing to the GitHub repository
 │
 └───core                    :directory contains all the core scripts of the program
 │   │   __init__.py
+│   │   pipeline_all_machines.ipynb :ML pipeline (outputs best model for all machines)
 │   │
 │   └───assets              :contains the sound datasets and images
 │       ├───images
