@@ -6,7 +6,9 @@
 
 # Jupyter Notebook
 .ipynb_checkpoints
-core/exploration.ipynb
 
 # Visual Studio Code
 .vscode/settings.json
+
+# Pycache
+*.pyc
