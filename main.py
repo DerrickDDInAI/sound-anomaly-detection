@@ -104,7 +104,7 @@ def main() -> None:
     print(f"machine type: {random_sound.machine_type.values[0]}") # .values[0] to print the value and not a list
     print(f"model id: {random_sound.model_id.values[0]}")
     print(f"noise db: {random_sound.noise_db.values[0]}")
-    print(f"sound: {random_sound.model_id.values[0]}")
+    print(f"sound: {random_sound.sound.values[0]}")
     print(f"true label: {random_sound.target.values[0]}")
 
    # Ask the user if he wants to listen the predicted abnormal and normal sound of the machine
@@ -127,7 +127,7 @@ def main() -> None:
         # Listen to pre-recorded normal sound
         print("Pre-recorded normal sound")
         normal_sound = df.loc[
-            (df.machine_type == "valve") & 
+            (df.machine_type == random_sound.machine_type.values[0]) &  
             (df.noise_db == 0) & 
             (df.model_id == 0) & 
             (df.target == 0) & 
