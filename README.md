@@ -129,7 +129,8 @@ sound-anomaly-detection
 └───core                    :directory contains all the core scripts of the program
 │   │   __init__.py
 │   │
-│   └───assets              :contains the sound datasets and images
+│   └───assets              :contains the sound datasets, machine learning model and images
+│       ├───data
 │       ├───images
 │       └───sounds
 ```
