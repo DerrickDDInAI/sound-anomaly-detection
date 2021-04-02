@@ -130,7 +130,8 @@ sound-anomaly-detection
 │   │   __init__.py
 │   │   pipeline_all_machines.ipynb :ML pipeline (outputs best model for all machines)
 │   │
-│   └───assets              :contains the sound datasets and images
+│   └───assets              :contains the sound datasets, machine learning model and images
+│       ├───data
 │       ├───images
 │       └───sounds
 ```
